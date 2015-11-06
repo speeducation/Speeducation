@@ -34,7 +34,8 @@ THIRDPARTY_APPS = (
 )
 
 LOCAL_APPS = (
-
+    'apps.alumnos',
+    'apps.maestros',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRDPARTY_APPS +LOCAL_APPS

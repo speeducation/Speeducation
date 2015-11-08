@@ -1,0 +1,32 @@
+{% extends 'alumnos/base.html' %}
+
+{% block content %}
+    <h1 class="page-header">Dashboard</h1>
+    {% if user.is_authenticated %}
+    <h2 class="sub-header">{{ user.first_name }}</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Ultima Actualizacion</th>
+                  <th>Activo?</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for alumno in alumnos %}
+                    <tr>
+                      <td>{{ alumno.nombres }}</td>
+                      <td>{{ alumno.apellidos }}</td>
+                      <td>{{ alumno.fecha_registro }}</td>
+                      <td>{{ alumno.activo }}</td>
+                      <td><a class="btn btn-sm btn-primary" href="/alumno/{{ alumno.pk }}/editar" role="button">Editar</a></td>
+                      <td><a class="btn btn-sm btn-primary" href="/alumno/{{ alumno.pk }}/" role="button">Perfil</a></td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+    {% endif %}
+{% endblock %}

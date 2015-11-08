@@ -1,0 +1,12 @@
+{% extends 'alumnos/base.html' %}
+
+{% block content %}
+    <div class="alumno">
+        {% if alumno.fecha_registro %}
+            <div class="fecha">
+                <h1>{{alumno.nombres}}</h1>
+                {{ alumno.fecha_registro }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

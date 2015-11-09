@@ -18,13 +18,13 @@ def detalles_alumno(request, pk):
 def editar_alumno(request, pk):
     alumno = get_object_or_404(Alumno, pk=pk)
     if request.method == "POST":
-        form = AgregarAlumno(request.POST)
+        form = AgregarAlumno(request.POST, instance = alumno)
         if form.is_valid():
             alumno = form.save(commit = False)
             alumno.save()
             return redirect('/alumno/'+str(alumno.pk), pk=alumno.pk)
         else:
-            form.save()
+            form = AgregarAlumno(instance = alumno)
             return redirect('/')
     else:
         form = AgregarAlumno(instance = alumno)

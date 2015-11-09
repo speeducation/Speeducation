@@ -2,10 +2,12 @@
 
 {% block content %}
     <div class="alumno">
-        {% if alumno.fecha_registro %}
+        {% if alumno.activo %}
             <div class="fecha">
                 <h1>{{alumno.nombres}}</h1>
-                {{ alumno.fecha_registro }}
+                <h2>Fecha de registro: {{ alumno.fecha_registro }}</h2>
+                <h2>Grupo: {{ alumno.grupo }}</h2>
+                <h2>Maestro: {{ alumno.maestro}}</h2>
             </div>
         {% endif %}
     </div>

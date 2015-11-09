@@ -40,3 +40,10 @@ def agregar_alumno(request):
     else:
         form = AgregarAlumno()
     return render(request, 'alumnos/editar_alumno.html', {'form': form})
+
+def eliminar_alumno(request, pk):
+    alumno = Alumno.objects.get(pk=pk)
+    alumno.delete()
+    alumnos = Alumno.objects.all()
+    alumnos = alumnos[::-1]
+    return render(request, 'alumnos/lista_alumnos.html', {'alumnos': alumnos})

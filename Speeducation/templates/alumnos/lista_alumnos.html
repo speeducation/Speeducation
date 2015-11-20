@@ -2,17 +2,19 @@
 
 {% block content %}
     <h1 class="page-header">Dashboard</h1>
-    <a class="btn btn-sm btn-primary" href="/alumno/agregar/" role="button">Agregar Un Alumno</a>
+    <a class="btn btn-sm btn-primary pull-right" ref="/alumno/agregar/" role="button">Agregar Un Alumno</a>
     {% if user.is_authenticated %}
     <h2 class="sub-header">{{ user.first_name }}</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Ultima Actualizacion</th>
-                  <th>Activo?</th>
+                  <th>Nombres</th>
+                  <th>Apellidos</th>
+                  <th>Fecha de registro</th>
+                  <th>Estado</th>
+                  <th>Maestro</th>
+                  <th>Grupo</th>
                 </tr>
               </thead>
               <tbody>
@@ -21,7 +23,13 @@
                       <td>{{ alumno.nombres }}</td>
                       <td>{{ alumno.apellidos }}</td>
                       <td>{{ alumno.fecha_registro }}</td>
-                      <td>{{ alumno.activo }}</td>
+                      {% if alumno.activo %}
+                        <td>Activo</td>
+                      {% else %}
+                        <td>Baja temporal</td>
+                      {% endif %}
+                      <td>{{ alumno.maestro}}</td>
+                      <td>{{ alumno.grupo }}</td>
                       <td><a class="btn btn-sm btn-primary" href="/alumno/{{ alumno.pk }}/editar" role="button">Editar</a></td>
                       <td><a class="btn btn-sm btn-primary" href="/alumno/{{ alumno.pk }}/" role="button">Perfil</a></td>
                       <td><a class="btn btn-sm btn-primary" href="/alumno/{{ alumno.pk }}/eliminar" role="button">Eliminar</a></td>

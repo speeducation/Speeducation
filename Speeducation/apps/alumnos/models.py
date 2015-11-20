@@ -1,15 +1,15 @@
 from django.db import models
 
 from django.utils import timezone
+from apps.maestros.models import Maestro
 #from durationfield.db.models.fields.duration import DurationField
 
 # Create your models here.
 class Alumno(models.Model):
-
     nombres =  models.CharField(max_length=50, unique=False)
     apellidos = models.CharField(max_length=100)
-    fecha_registro = models.DateField(blank = False, null = False, default = timezone.now())
-    grupo = models.IntegerField()
+    fecha_registro = models.DateField(blank = False, null = False, default = timezone.now)
+    grupo = models.CharField(max_length=5)
     activo = models.BooleanField(default = True)
     maestro = models.CharField(max_length= 50)
 

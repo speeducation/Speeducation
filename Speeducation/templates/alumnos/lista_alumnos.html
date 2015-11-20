@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1 class="page-header">Dashboard</h1>
-    <a class="btn btn-sm btn-primary pull-right" ref="/alumno/agregar/" role="button">Agregar Un Alumno</a>
+    <a class="btn btn-sm btn-primary pull-right" href="/alumno/agregar/" role="button">Agregar Un Alumno</a>
     {% if user.is_authenticated %}
     <h2 class="sub-header">{{ user.first_name }}</h2>
           <div class="table-responsive">

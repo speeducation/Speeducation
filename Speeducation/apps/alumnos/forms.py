@@ -1,5 +1,6 @@
 from django import forms
 from .models import Alumno
+from apps.maestros.models import Maestro
 
 class AgregarAlumno(forms.ModelForm):
 
@@ -15,3 +16,4 @@ class AgregarAlumno(forms.ModelForm):
         self.fields['grupo'].required = True
         self.fields['activo'].required = True
         self.fields['maestro'].required = True
+    maestro = forms.ModelChoiceField(queryset=Maestro.objects.all(), to_field_name='apellidos')

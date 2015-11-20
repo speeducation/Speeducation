@@ -27,9 +27,9 @@ from .choices import choices
 
 # Create your models here.
 class Maestro(models.Model):
-    username = models.CharField(max_length=50, unique=True)
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(max_length=50, unique=True)
     apellidos = models.CharField(max_length=50)
+    username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(max_length=50, unique=True)
     sexo = models.CharField(max_length=50, choices=choices.GENDER_CHOICES, default=choices.GENDER_CHOICES)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
@@ -50,4 +50,4 @@ class Maestro(models.Model):
         return self.username"""
 
     def __str__(self):
-        return self.username
+        return self.nombre + self.apellidos

@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="maestro">
+        <div class="fecha">
+            <h1>{{maestro.nombre}} {{maestro.apellidos}}</h1>
+            <h2>Correo: {{ maestro.email}}</h2>
+        </div>
+    </div>
+{% endblock %}

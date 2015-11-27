@@ -14,6 +14,3 @@ class AgregarMaestro(forms.ModelForm):
         self.fields['apellidos'].required = True
         self.fields['email'].required = True
         self.fields['sexo'].required = True
-        self.fields['updated'].required = True
-
-        

@@ -1,10 +1,8 @@
-{% extends 'maestros/base.html' %}
+{% extends 'base/base.html' %}
 
-{% block post_maestros %}
+{% block content %}
     <h1 class="page-header">Dashboard</h1>
     <a class="btn btn-sm btn-primary pull-right" href="/maestro/agregar/" role="button">Agregar Un Maestro</a>
-    {% if user.is_authenticated %}
-    <h2 class="sub-header">{{ user.first_name }}</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -24,7 +22,7 @@
                       <td>{{ maestro.nombre }}</td>
                       <td>{{ maestro.apellidos }}</td>
                       <td>{{ maestro.email }}</td>
-                      <td>{{ maestro.genero }}</td>
+                      <td>{{ maestro.sexo }}</td>
                       <td>{{ maestro.updated }}</td>
                       <td><a class="btn btn-sm btn-primary" href="/maestro/{{ maestro.pk }}/editar" role="button">Editar</a></td>
                       <td><a class="btn btn-sm btn-primary" href="/maestro/{{ maestro.pk }}/" role="button">Perfil</a></td>
@@ -34,5 +32,4 @@
               </tbody>
             </table>
           </div>
-    {% endif %}
 {% endblock %}

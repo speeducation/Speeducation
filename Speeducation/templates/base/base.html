@@ -12,20 +12,20 @@
     <title>Dashboard Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    {% include 'alumnos/head_css.html' %}
+    {% include 'base/head_css.html' %}
 
   </head>
 
   <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        {% include 'alumnos/navbar.html' %}
+        {% include 'base/navbar.html' %}
     </nav>
 
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-            {% include 'alumnos/side_bar.html' %}
+            {% include 'base/side_bar.html' %}
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             {% block content %}
@@ -36,6 +36,6 @@
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-    {% include 'maestros/javascript.html' %}
+    {% include 'base/javascript.html' %}
   </body>
 </html>

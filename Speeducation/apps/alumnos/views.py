@@ -8,8 +8,8 @@ from django.shortcuts import redirect
 # Create your views here.
 def login(request):
     alumnos = Alumno.objects.all()
-    return render(request, 'alumnos/login.html', {'alumnos': alumnos})
-    
+    return render(request, 'base/login.html', {'alumnos': alumnos})
+
 def lista_alumnos(request):
     alumnos = Alumno.objects.all()
     alumnos = alumnos[::-1]

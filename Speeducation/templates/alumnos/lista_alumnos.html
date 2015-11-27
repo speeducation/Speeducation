@@ -14,7 +14,7 @@
                   <th>Fecha de registro</th>
                   <th>Estado</th>
                   <th>Maestro</th>
-                  <th>Grupo</th>
+                  <th>Sexo</th>
                 </tr>
               </thead>
               <tbody>
@@ -29,7 +29,7 @@
                         <td>Baja temporal</td>
                       {% endif %}
                       <td>{{ alumno.maestro}}</td>
-                      <td>{{ alumno.grupo }}</td>
+                      <td>{{ alumno.sexo }}</td>
                       <td><a class="btn btn-sm btn-primary" href="/alumno/{{ alumno.pk }}/editar" role="button">Editar</a></td>
                       <td><a class="btn btn-sm btn-primary" href="/alumno/{{ alumno.pk }}/" role="button">Perfil</a></td>
                       <td><a class="btn btn-sm btn-primary" href="/alumno/{{ alumno.pk }}/eliminar" role="button">Eliminar</a></td>

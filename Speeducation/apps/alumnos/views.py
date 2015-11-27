@@ -29,7 +29,7 @@ def editar_alumno(request, pk):
             return redirect('/alumno/'+str(alumno.pk), pk=alumno.pk)
         else:
             form = AgregarAlumno(instance = alumno)
-            return redirect('/')
+            return redirect('/alumnos/lista')
     else:
         form = AgregarAlumno(instance = alumno)
     return render(request, 'alumnos/editar_alumno.html', {'form': form})

@@ -36,6 +36,7 @@ THIRDPARTY_APPS = (
 LOCAL_APPS = (
     'apps.alumnos',
     'apps.maestros',
+    'apps.lineas',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRDPARTY_APPS +LOCAL_APPS
@@ -86,7 +87,7 @@ WSGI_APPLICATION = 'Speeducation.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'CAM',
+        'NAME': 'TestSpeed',
         'USER': 'admin',
         'PASSWORD': 'pass',
         'HOST': 'localhost',

@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from .forms import AgregarMaestro
 from django.shortcuts import redirect
 from .models import Maestro
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
     alumnos = Alumno.objects.all()
@@ -14,15 +15,21 @@ def home(request):
 
     return render(request,"maestros/alumnos_list.html", context)  #RENDERIZAMOS UN TEMPLATE, CON UN REQUEST ESPECIFICO Y UN CONTEXTO
 
+def login(request):
+    return render(request, 'base/login.html')
+
+@login_required(login_url='/')
 def lista_maestros(request):
     maestros = Maestro.objects.all()
     maestros = maestros[::-1]
     return render(request, 'maestros/lista_maestros.html', {'maestros': maestros})
 
+@login_required(login_url='/')
 def detalles_maestro(request, pk):
     maestro = get_object_or_404(Maestro, pk=pk)
     return render(request, 'maestros/detalles_maestro.html', {'maestro': maestro})
 
+@login_required(login_url='/')
 def editar_maestro(request, pk):
     maestro = get_object_or_404(Maestro, pk=pk)
     if request.method == "POST":
@@ -38,6 +45,7 @@ def editar_maestro(request, pk):
         form = AgregarMaestro(instance = maestro)
     return render(request, 'maestros/editar_maestro.html', {'form': form})
 
+@login_required(login_url='/')
 def agregar_maestro(request):
     if request.method == "POST":
         form = AgregarMaestro(request.POST)
@@ -49,6 +57,7 @@ def agregar_maestro(request):
         form = AgregarMaestro()
     return render(request, 'maestros/editar_maestro.html', {'form': form})
 
+@login_required(login_url='/')
 def eliminar_maestro(request, pk):
     maestro = Maestro.objects.get(pk=pk)
     maestro.delete()

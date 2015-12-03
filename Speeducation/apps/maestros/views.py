@@ -3,6 +3,7 @@ from apps.alumnos.models import Alumno
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import AgregarMaestro
+from .forms import AgregarUsuario
 from django.shortcuts import redirect
 from .models import Maestro
 from django.contrib.auth.decorators import login_required
@@ -48,14 +49,18 @@ def editar_maestro(request, pk):
 @login_required(login_url='/')
 def agregar_maestro(request):
     if request.method == "POST":
-        form = AgregarMaestro(request.POST)
-        if form.is_valid():
-            maestro = form.save(commit=False)
+        uform = AgregarUsuario(request.POST,prefix='user')
+        upform = AgregarMaestro(request.POST, prefix='userprofile')
+        if uform.is_valid() * upform.is_valid():
+            user = uform.save()
+            maestro = upform.save(commit=False)
+            maestro.user = user
             maestro.save()
             return redirect('/maestro/'+str(maestro.pk), pk=maestro.pk)
     else:
-        form = AgregarMaestro()
-    return render(request, 'maestros/editar_maestro.html', {'form': form})
+        uform = AgregarUsuario(prefix='user')
+        upform = AgregarMaestro(prefix='userprofile')
+    return render(request, 'base/registrar.html', dict(userform=uform, userprofileform=upform))
 
 @login_required(login_url='/')
 def eliminar_maestro(request, pk):

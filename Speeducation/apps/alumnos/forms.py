@@ -16,4 +16,4 @@ class AgregarAlumno(forms.ModelForm):
         self.fields['grupo'].required = True
         self.fields['activo'].required = True
         self.fields['maestro'].required = True
-    maestro = forms.ModelChoiceField(queryset=Maestro.objects.all(), to_field_name='apellidos')
+    maestro = forms.ModelChoiceField(queryset=Maestro.objects.all())

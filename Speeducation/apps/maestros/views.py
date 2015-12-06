@@ -4,9 +4,12 @@ from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import AgregarMaestro
 from .forms import AgregarUsuario
-from django.shortcuts import redirect
+from django.shortcuts import render_to_response,redirect
 from .models import Maestro
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
+from django.template import RequestContext
+from django.http import HttpResponseRedirect
 # Create your views here.
 def home(request):
     alumnos = Alumno.objects.all()
@@ -16,8 +19,22 @@ def home(request):
 
     return render(request,"maestros/alumnos_list.html", context)  #RENDERIZAMOS UN TEMPLATE, CON UN REQUEST ESPECIFICO Y UN CONTEXTO
 
-def login(request):
-    return render(request, 'base/login.html')
+
+def login_user(request):
+    username = password = ''
+    if request.POST:
+        username = request.POST.get('username', False)
+        password = request.POST.get('password', False)
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('/alumnos/lista')
+    return render_to_response('base/login.html', context_instance=RequestContext(request))
+
+
+
+
 
 @login_required(login_url='/')
 def lista_maestros(request):

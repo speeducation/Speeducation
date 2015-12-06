@@ -2,40 +2,42 @@
 <html>
 <head>
     {% include 'base/head_css.html' %}
+    {% load staticfiles %}
+
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
 </head>
 <body>
     {% include 'base/javascript.html' %}
-<div class="outer">
-  <div class="middle">
-    <div class="inner">
-        <h1 style="text-align: center">Login</h1>
+    <div class="container container-table">
+    <div class="row vertical-center-row">
+        <div class="text-center col-md-4 col-md-offset-4" style="background:white">
             <div id="login">
+
                 <form class="form-horizontal" name="LoginForm" action="/login/" method="post">
                 {% csrf_token %}
                 {% if next %}
                     <input type="hidden" name="next" value="{{ next }}" />
                 {% endif %}
-                <div class="control-group">
-                    <label class="control-label" for="username">Username</label>
+
+                    <label class="control-label pull-left" for="username">Username</label>
                     <div class="controls">
                         <input type="text" id="username" name="username"  placeholder="Username">
                     </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="password">Password</label>
+
+                    <label class="control-label pull-left" for="password">Password</label>
                     <div class="controls">
                         <input type="password" name="password" id="password" placeholder="Password">
                     </div>
-                </div>
                 <div class="control-group">
                     <div class="controls">
-                        <button type="submit" class="btn">Login</button>
+                        <button type="submit" class="btn" style="background-color:#428bca; color:white; width:100px">Login</button>
                     </div>
                 </div>
                 </form>
             </div>
           </div>
         </div>
-      </div>
+    </div>
+
 </body>
 </html>

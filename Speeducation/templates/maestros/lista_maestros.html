@@ -18,10 +18,10 @@
               <tbody>
                 {% for maestro in maestros %}
                     <tr>
-                      <td>{{ maestro.username }}</td>
-                      <td>{{ maestro.nombre }}</td>
-                      <td>{{ maestro.apellidos }}</td>
-                      <td>{{ maestro.email }}</td>
+                      <td>{{ maestro.user.username }}</td>
+                      <td>{{ maestro.user.first_name}}</td>
+                      <td>{{ maestro.user.last_name }}</td>
+                      <td>{{ maestro.user.email }}</td>
                       <td>{{ maestro.sexo }}</td>
                       <td>{{ maestro.updated }}</td>
                       <td><a class="btn btn-sm btn-primary" href="/maestro/{{ maestro.pk }}/editar" role="button">Editar</a></td>

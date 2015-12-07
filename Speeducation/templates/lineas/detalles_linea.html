@@ -40,8 +40,8 @@
                     <tr>
                         <td>{{ conducta.descripcion }}</td>
                         <td>{{ conducta.updated }}</td>
-                        <td><a class="btn btn-sm btn-primary" href="{{ url }}conducta/{{ actividad.pk }}/editar" role="button">Editar</a></td>
-                        <td><a class="btn btn-sm btn-primary" href="{{ url }}conducta/{{ actividad.pk }}/eliminar" role="button">Eliminar</a></td>
+                        <td><a class="btn btn-sm btn-primary" href="{{ url }}conducta/{{ conducta.pk }}/editar" role="button">Editar</a></td>
+                        <td><a class="btn btn-sm btn-primary" href="{{ url }}conducta/{{ conducta.pk }}/eliminar" role="button">Eliminar</a></td>
                     </tr>
                 {% endfor %}
               </tbody>

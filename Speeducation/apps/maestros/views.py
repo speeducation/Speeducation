@@ -32,10 +32,6 @@ def login_user(request):
                 return HttpResponseRedirect('/alumnos/lista')
     return render_to_response('base/login.html', context_instance=RequestContext(request))
 
-
-
-
-
 @login_required(login_url='/')
 def lista_maestros(request):
     maestros = Maestro.objects.all()

@@ -10,4 +10,5 @@ urlpatterns = [
     #url(r'^$', include('apps.maestros.urls'), name='home'),
     url(r'', include('apps.alumnos.urls')),
     url(r'', include('apps.maestros.urls')),
+    url(r'', include('apps.lineas.urls')),
 ]

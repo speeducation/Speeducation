@@ -10,4 +10,5 @@ class AgregarUsuario(forms.ModelForm):
 class AgregarMaestro(forms.ModelForm):
     class Meta:
         model = Maestro
+        fields = '__all__'
         exclude = ['user']

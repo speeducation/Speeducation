@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h1 class="page-header">Dashboard</h1>
+    <a class="btn btn-sm btn-primary pull-right" href="/lineas/agregar/" role="button">Agregar Nueva Linea</a>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Last Updated</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                {% for linea in lineas %}
+                    <tr>
+                        <td>{{ linea.nombre }}</td>
+                        <td>{{ linea.updated }}</td>
+                        <td><a class="btn btn-sm btn-primary" href="/linea/{{ linea.pk }}/" role="button">Detalles</a></td>
+                        <td><a class="btn btn-sm btn-primary" href="/linea/{{ linea.pk }}/editar" role="button">Editar</a></td>
+                        <td><a class="btn btn-sm btn-primary" href="/linea/{{ linea.pk }}/eliminar" role="button">Eliminar</a></td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+{% endblock %}

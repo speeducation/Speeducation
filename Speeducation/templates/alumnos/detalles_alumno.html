@@ -56,12 +56,10 @@
                         <tbody>
                             {% for plan in planes_estudio %}
                                 <tr>
-                                    <td>
-                                        {{ plan.linea }}
-                                    </td>
-                                    <td>
-                                        {{ plan.periodo }}
-                                    </td>
+                                    <td>{{ plan.linea }}</td>
+                                    <td>{{ plan.periodo }}</td>
+                                    <td><a class="btn btn-sm btn-primary" href="{{ url }}plan/{{ plan.pk }}/editar" role="button">Editar</a></td>
+                                    <td><a class="btn btn-sm btn-danger" href="{{ url }}plan/{{ plan.pk }}/eliminar" role="button">Eliminar</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>

@@ -18,11 +18,13 @@ def lista_alumnos(request):
 
 @login_required(login_url='/')
 def detalles_alumno(request, pk):
+    url = get_base_url(request)
     alumno = get_object_or_404(Alumno, pk=pk)
     planes_estudio = PlanEstudio.objects.filter(alumno = alumno)
     context = {
         'alumno' : alumno,
         'planes_estudio' : planes_estudio,
+        'url' : url,
     }
     return render(request, 'alumnos/detalles_alumno.html', context)
 
@@ -34,9 +36,9 @@ def editar_alumno(request, pk):
         if form.is_valid():
             alumno = form.save(commit = False)
             alumno.save()
-            return redirect('/alumno/'+str(alumno.pk), pk=alumno.pk)
+            return redirect('/alumnos/lista/')
         else:
-            return redirect('/alumno/'+str(alumno.pk), pk=alumno.pk)
+            return redirect('/alumnos/lista/')
     else:
         form = AgregarAlumno(instance = alumno)
     return render(request, 'alumnos/editar_alumno.html', {'form': form})
@@ -61,6 +63,9 @@ def eliminar_alumno(request, pk):
     alumnos = alumnos[::-1]
     return render(request, 'alumnos/lista_alumnos.html', {'alumnos': alumnos})
 
+##############PLAN DE ESTUDIOS DE UN ALUMNO ESPECIFICO####################
+
+@login_required(login_url='/')
 def agregar_plan(request, pk):
     if request.method == "POST":
         alumno =  Alumno.objects.get(pk=pk)
@@ -75,6 +80,30 @@ def agregar_plan(request, pk):
     else:
         form = AgregarPlan()
     return render(request, 'alumnos/editar_plan.html', {'form': form})
+
+@login_required(login_url='/')
+def editar_plan(request, pk):
+    plan = get_object_or_404(PlanEstudio, pk=pk)
+    print plan
+    if request.method == "POST":
+        form = AgregarPlan(request.POST, instance = plan)
+        if form.is_valid():
+            plan = form.save(commit = False)
+            plan.save()
+            return redirect(get_base_url(request).split('/plan')[0])
+        else:
+            return redirect('/')
+    else:
+        form = AgregarPlan(instance = plan)
+    return render(request, 'alumnos/editar_plan.html', {'form': form})
+
+@login_required(login_url='/')
+def eliminar_plan(request, pk):
+    plan = PlanEstudio.objects.get(pk=pk)
+    plan.delete()
+    return redirect(get_base_url(request).split('/plan')[0])
+
+##############################FUNCIONES###############################
 
 def check_duplicate_plan(planes, plan):
     for aux in planes:

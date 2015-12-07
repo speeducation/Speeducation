@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^alumno/(?P<pk>[0-9]+)/eliminar/$', views.eliminar_alumno, name='eliminar_alumno'),
 
     url(r'^alumno/(?P<pk>[0-9]+)/plan/agregar$', views.agregar_plan, name='agregar_plan'),
+    url(r'^alumno/([0-9]+)/plan/(?P<pk>[0-9]+)/editar$', views.editar_plan, name='editar_plan'),
+    url(r'^alumno/([0-9]+)/plan/(?P<pk>[0-9]+)/eliminar$', views.eliminar_plan, name='editar_plan'),
 ]

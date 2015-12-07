@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Alumno
+from .models import Alumno, PlanEstudio
 from django.shortcuts import render, get_object_or_404
-from .forms import AgregarAlumno
+from .forms import AgregarAlumno, AgregarPlan
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -19,7 +19,12 @@ def lista_alumnos(request):
 @login_required(login_url='/')
 def detalles_alumno(request, pk):
     alumno = get_object_or_404(Alumno, pk=pk)
-    return render(request, 'alumnos/detalles_alumno.html', {'alumno': alumno})
+    planes_estudio = PlanEstudio.objects.filter(alumno = alumno)
+    context = {
+        'alumno' : alumno,
+        'planes_estudio' : planes_estudio,
+    }
+    return render(request, 'alumnos/detalles_alumno.html', context)
 
 @login_required(login_url='/')
 def editar_alumno(request, pk):
@@ -31,8 +36,7 @@ def editar_alumno(request, pk):
             alumno.save()
             return redirect('/alumno/'+str(alumno.pk), pk=alumno.pk)
         else:
-            form = AgregarAlumno(instance = alumno)
-            return redirect('/')
+            return redirect('/alumno/'+str(alumno.pk), pk=alumno.pk)
     else:
         form = AgregarAlumno(instance = alumno)
     return render(request, 'alumnos/editar_alumno.html', {'form': form})
@@ -56,3 +60,30 @@ def eliminar_alumno(request, pk):
     alumnos = Alumno.objects.all()
     alumnos = alumnos[::-1]
     return render(request, 'alumnos/lista_alumnos.html', {'alumnos': alumnos})
+
+def agregar_plan(request, pk):
+    if request.method == "POST":
+        alumno =  Alumno.objects.get(pk=pk)
+        form = AgregarPlan(request.POST)
+        planes = PlanEstudio.objects.filter(alumno = alumno)
+        if form.is_valid():
+            plan = form.save(commit=False)
+            plan.alumno = alumno
+            if not check_duplicate_plan(planes, plan):
+                plan.save()
+            return redirect('/alumno/'+str(alumno.pk), pk=alumno.pk)
+    else:
+        form = AgregarPlan()
+    return render(request, 'alumnos/editar_plan.html', {'form': form})
+
+def check_duplicate_plan(planes, plan):
+    for aux in planes:
+        if aux.linea == plan.linea and aux.periodo == plan.periodo:
+            return True
+    return False
+
+def get_base_url(request):
+    url = str(request)
+    url = url.split("'", 1)
+    url = url[1].replace("'>","")
+    return url

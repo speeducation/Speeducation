@@ -6,5 +6,7 @@ urlpatterns = [
     url(r'^alumno/(?P<pk>[0-9]+)/$', views.detalles_alumno),
     url(r'^alumno/(?P<pk>[0-9]+)/editar/$', views.editar_alumno, name='editar_alumno'),
     url(r'^alumno/agregar/$', views.agregar_alumno, name='agregar_alumno'),
-    url(r'^alumno/(?P<pk>[0-9]+)/eliminar/$', views.eliminar_alumno, name='eliminar_alumno')
+    url(r'^alumno/(?P<pk>[0-9]+)/eliminar/$', views.eliminar_alumno, name='eliminar_alumno'),
+
+    url(r'^alumno/(?P<pk>[0-9]+)/plan/agregar$', views.agregar_plan, name='agregar_plan'),
 ]

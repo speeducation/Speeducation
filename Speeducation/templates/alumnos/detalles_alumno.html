@@ -3,11 +3,70 @@
 {% block content %}
     <div class="alumno">
         {% if alumno.activo %}
-            <div class="fecha">
-                <h1>{{alumno.nombres}} {{alumno.apellidos}}</h1>
-                <h2>Fecha de registro: {{ alumno.fecha_registro }}</h2>
-                <h2>Grupo: {{ alumno.grupo }}</h2>
-                <h2>Maestro: {{ alumno.maestro}}</h2>
+            <div class="col-xs-12 toppad">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Detalles del Alumno</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class=" col-md-12 col-lg-12 ">
+                                <table class="table table-user-information">
+                                    <thead>
+                                        <strong>Datos Personales:</strong>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><strong>Nombre:</strong></td>
+                                        <td>{{ alumno.nombres }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Apellido:</strong></td>
+                                        <td>{{ alumno.apellidos }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Fecha de Registro:</strong></td>
+                                        <td>{{ alumno.fecha_registro }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Grupo:</strong></td>
+                                        <td>{{ alumno.grupo }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Maestro:</strong></td>
+                                        <td>{{ alumno.maestro }}</td>
+                                    </tr>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-sm btn-primary pull-right" href="/alumno/{{ alumno.pk }}/plan/agregar" role="button">Agregar Nuevo Plan de Estudio</a>
+                <div class="table-responsive">
+                    <h2>Planes de Estudio</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Linea</th>
+                                <th>Periodo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for plan in planes_estudio %}
+                                <tr>
+                                    <td>
+                                        {{ plan.linea }}
+                                    </td>
+                                    <td>
+                                        {{ plan.periodo }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         {% endif %}
     </div>

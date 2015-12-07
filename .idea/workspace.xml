@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="77500d5b-4e7e-4935-9867-9ff0bd3835a7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Speeducation/apps/alumnos/views.py" afterPath="$PROJECT_DIR$/Speeducation/apps/alumnos/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Speeducation/templates/alumnos/detalles_alumno.html" afterPath="$PROJECT_DIR$/Speeducation/templates/alumnos/detalles_alumno.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements/base.txt" afterPath="$PROJECT_DIR$/requirements/base.txt" />
     </list>
     <ignored path="Speeducation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -630,7 +627,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449478328550</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="&quot;Se puede agregar planes de estudio del alumno se puede editar o eliminar&quot;">
+      <created>1449479062818</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1449479062818</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">

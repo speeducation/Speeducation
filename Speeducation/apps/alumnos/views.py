@@ -103,6 +103,8 @@ def eliminar_plan(request, pk):
     plan.delete()
     return redirect(get_base_url(request).split('/plan')[0])
 
+#############################COMPORTAMIENTO###########################
+
 ##############################FUNCIONES###############################
 
 def check_duplicate_plan(planes, plan):

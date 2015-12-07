@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77500d5b-4e7e-4935-9867-9ff0bd3835a7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Speeducation/Procfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Speeducation/apps/alumnos/urls.py" afterPath="$PROJECT_DIR$/Speeducation/apps/alumnos/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Speeducation/apps/alumnos/views.py" afterPath="$PROJECT_DIR$/Speeducation/apps/alumnos/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Speeducation/templates/alumnos/detalles_alumno.html" afterPath="$PROJECT_DIR$/Speeducation/templates/alumnos/detalles_alumno.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements/base.txt" afterPath="$PROJECT_DIR$/requirements/base.txt" />
@@ -46,11 +44,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Speeducation/apps/alumnos/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.61227787">
-                  <caret line="105" column="30" selection-start-line="105" selection-start-column="30" selection-end-line="105" selection-end-column="30" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="105" column="70" selection-start-line="105" selection-start-column="70" selection-end-line="105" selection-end-column="70" />
                   <folding />
                 </state>
               </provider>
@@ -79,8 +77,18 @@
           <file leaf-file-name="detalles_alumno.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Speeducation/templates/alumnos/detalles_alumno.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-5.3333335">
-                  <caret line="60" column="114" selection-start-line="60" selection-start-column="80" selection-end-line="60" selection-end-column="114" />
+                <state vertical-scroll-proportion="-6.0416665">
+                  <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="base.txt" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/requirements/base.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.19386107">
+                  <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -177,13 +185,13 @@
         <option value="$PROJECT_DIR$/Speeducation/templates/lineas/detalles_linea.html" />
         <option value="$PROJECT_DIR$/Speeducation/templates/alumnos/editar_plan.html" />
         <option value="$PROJECT_DIR$/Speeducation/apps/alumnos/forms.py" />
-        <option value="$PROJECT_DIR$/Speeducation/templates/alumnos/detalles_alumno.html" />
         <option value="$PROJECT_DIR$/Speeducation/apps/lineas/views.py" />
-        <option value="$PROJECT_DIR$/requirements/base.txt" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/Speeducation/Procfile" />
         <option value="$PROJECT_DIR$/Speeducation/apps/alumnos/urls.py" />
         <option value="$PROJECT_DIR$/Speeducation/apps/alumnos/views.py" />
+        <option value="$PROJECT_DIR$/Speeducation/templates/alumnos/detalles_alumno.html" />
+        <option value="$PROJECT_DIR$/requirements/base.txt" />
       </list>
     </option>
   </component>
@@ -616,7 +624,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449472167525</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="&quot;Se puede agregar planes de estudio del alumno se puede editar o eliminar&quot;">
+      <created>1449478328550</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1449478328550</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -666,7 +680,8 @@
     <MESSAGE value="&quot;Se puede agregar rubros de evaluacion (Actividades, Lineas, Conductas)  ya relacionados&quot;" />
     <MESSAGE value="&quot;Se puede agregar rubros de evaluacion (Actividades, Lineas, Conductas)  ya relacionados, se corrigio botones&quot;" />
     <MESSAGE value="&quot;Se puede agregar planes de estudio del alumno, todavia no se puden editar o eliminar&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Se puede agregar planes de estudio del alumno, todavia no se puden editar o eliminar&quot;" />
+    <MESSAGE value="&quot;Se puede agregar planes de estudio del alumno se puede editar o eliminar&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Se puede agregar planes de estudio del alumno se puede editar o eliminar&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1005,14 +1020,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Speeducation/templates/alumnos/detalles_alumno.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3333335">
-          <caret line="60" column="114" selection-start-line="60" selection-start-column="80" selection-end-line="60" selection-end-column="114" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Speeducation/apps/alumnos/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1030,14 +1037,6 @@
           <folding>
             <element signature="e#0#46#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements/base.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31502423">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1083,8 +1082,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Speeducation/apps/alumnos/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61227787">
-          <caret line="105" column="30" selection-start-line="105" selection-start-column="30" selection-end-line="105" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="70" selection-start-line="105" selection-start-column="70" selection-end-line="105" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Speeducation/templates/alumnos/detalles_alumno.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.0416665">
+          <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements/base.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19386107">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>

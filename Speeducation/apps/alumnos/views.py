@@ -6,17 +6,19 @@ from .forms import AgregarAlumno, AgregarPlan
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-def login(request):
-    alumnos = Alumno.objects.all()
-    return render(request, 'base/login.html', {'alumnos': alumnos})
 
-@login_required(login_url='/')
+
+@login_required(login_url='/login/')
+def dashboard(request):
+    return redirect('/alumnos/lista/')
+
+@login_required(login_url='/login/')
 def lista_alumnos(request):
     alumnos = Alumno.objects.all()
     alumnos = alumnos[::-1]
     return render(request, 'alumnos/lista_alumnos.html', {'alumnos': alumnos})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def detalles_alumno(request, pk):
     url = get_base_url(request)
     alumno = get_object_or_404(Alumno, pk=pk)
@@ -28,7 +30,7 @@ def detalles_alumno(request, pk):
     }
     return render(request, 'alumnos/detalles_alumno.html', context)
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def editar_alumno(request, pk):
     alumno = get_object_or_404(Alumno, pk=pk)
     if request.method == "POST":
@@ -43,7 +45,7 @@ def editar_alumno(request, pk):
         form = AgregarAlumno(instance = alumno)
     return render(request, 'alumnos/editar_alumno.html', {'form': form})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def agregar_alumno(request):
     if request.method == "POST":
         form = AgregarAlumno(request.POST)
@@ -55,7 +57,7 @@ def agregar_alumno(request):
         form = AgregarAlumno()
     return render(request, 'alumnos/editar_alumno.html', {'form': form})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def eliminar_alumno(request, pk):
     alumno = Alumno.objects.get(pk=pk)
     alumno.delete()
@@ -65,7 +67,7 @@ def eliminar_alumno(request, pk):
 
 ##############PLAN DE ESTUDIOS DE UN ALUMNO ESPECIFICO####################
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def agregar_plan(request, pk):
     if request.method == "POST":
         alumno =  Alumno.objects.get(pk=pk)
@@ -81,10 +83,9 @@ def agregar_plan(request, pk):
         form = AgregarPlan()
     return render(request, 'alumnos/editar_plan.html', {'form': form})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def editar_plan(request, pk):
     plan = get_object_or_404(PlanEstudio, pk=pk)
-    print plan
     if request.method == "POST":
         form = AgregarPlan(request.POST, instance = plan)
         if form.is_valid():
@@ -97,15 +98,21 @@ def editar_plan(request, pk):
         form = AgregarPlan(instance = plan)
     return render(request, 'alumnos/editar_plan.html', {'form': form})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def eliminar_plan(request, pk):
     plan = PlanEstudio.objects.get(pk=pk)
     plan.delete()
     return redirect(get_base_url(request).split('/plan')[0])
 
+@login_required(login_url='/login/')
+def imprimir_reporte(request,pk):
+    return redirect('/')
+
+
 #############################COMPORTAMIENTO###########################
 
 ##############################FUNCIONES###############################
+
 
 def check_duplicate_plan(planes, plan):
     for aux in planes:

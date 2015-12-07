@@ -16,9 +16,11 @@ def home(request):
     context = {
         'alumnos' : alumnos,
     }
-
     return render(request,"maestros/alumnos_list.html", context)  #RENDERIZAMOS UN TEMPLATE, CON UN REQUEST ESPECIFICO Y UN CONTEXTO
 
+@login_required(login_url='/login/')
+def dashboard(request):
+    return redirect('/alumnos/lista/')
 
 def login_user(request):
     username = password = ''
@@ -29,21 +31,21 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/alumnos/lista')
+                return HttpResponseRedirect('/alumnos/lista/')
     return render_to_response('base/login.html', context_instance=RequestContext(request))
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def lista_maestros(request):
     maestros = Maestro.objects.all()
     maestros = maestros[::-1]
     return render(request, 'maestros/lista_maestros.html', {'maestros': maestros})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def detalles_maestro(request, pk):
     maestro = get_object_or_404(Maestro, pk=pk)
     return render(request, 'maestros/detalles_maestro.html', {'maestro': maestro})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def editar_maestro(request, pk):
     maestro = get_object_or_404(Maestro, pk=pk)
     if request.method == "POST":
@@ -59,7 +61,7 @@ def editar_maestro(request, pk):
         form = AgregarMaestro(instance = maestro)
     return render(request, 'maestros/editar_maestro.html', {'form': form})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def agregar_maestro(request):
     if request.method == "POST":
         uform = AgregarUsuario(request.POST,prefix='user')
@@ -75,7 +77,7 @@ def agregar_maestro(request):
         upform = AgregarMaestro(prefix='userprofile')
     return render(request, 'base/registrar.html', dict(userform=uform, userprofileform=upform))
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def eliminar_maestro(request, pk):
     maestro = Maestro.objects.get(pk=pk)
     maestro.delete()

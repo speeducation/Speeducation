@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def lista_lineas(request):
     lineas = Linea.objects.all()
     lineas = lineas[::-1]
@@ -13,7 +13,7 @@ def lista_lineas(request):
 
 ############################LINEA#################################
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def editar_linea(request, pk):
     linea = get_object_or_404(Linea, pk=pk)
     if request.method == "POST":
@@ -28,7 +28,7 @@ def editar_linea(request, pk):
         form = AgregarLinea(instance = linea)
     return render(request, 'lineas/editar_linea.html', {'form': form})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def agregar_linea(request):
     if request.method == "POST":
         form = AgregarLinea(request.POST)
@@ -40,13 +40,13 @@ def agregar_linea(request):
         form = AgregarLinea()
     return render(request, 'lineas/editar_linea.html', {'form': form})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def eliminar_linea(request, pk):
     linea = Linea.objects.get(pk=pk)
     linea.delete()
     return redirect('/lineas/lista')
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def detalles_linea(request, pk):
     url = get_base_url(request)
     linea = get_object_or_404(Linea, pk=pk)
@@ -63,7 +63,7 @@ def detalles_linea(request, pk):
 
 ####################ACTIVIDADES#################################
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def editar_actividad(request, pk):
     actividad = get_object_or_404(Actividad, pk=pk)
     if request.method == "POST":
@@ -78,7 +78,7 @@ def editar_actividad(request, pk):
         form = AgregarActividad(instance = actividad)
     return render(request, 'lineas/editar_actividad.html', {'form': form})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def agregar_actividad(request, pk):
     linea = Linea.objects.get(pk=pk)
     if request.method == "POST":
@@ -92,7 +92,7 @@ def agregar_actividad(request, pk):
         form = AgregarActividad()
     return render(request, 'lineas/editar_actividad.html', {'form': form})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def eliminar_actividad(request, pk):
     actividad = Actividad.objects.get(pk=pk)
     actividad.delete()
@@ -100,7 +100,7 @@ def eliminar_actividad(request, pk):
 
 ##############################CONDUCTAS###########################
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def editar_conducta(request, pk):
     conducta = get_object_or_404(Conducta, pk=pk)
     if request.method == "POST":
@@ -115,7 +115,7 @@ def editar_conducta(request, pk):
         form = AgregarConducta(instance = conducta)
     return render(request, 'lineas/editar_conducta.html', {'form': form})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def agregar_conducta(request, pk):
     linea = Linea.objects.get(pk=pk)
     if request.method == "POST":
@@ -129,7 +129,7 @@ def agregar_conducta(request, pk):
         form = AgregarConducta()
     return render(request, 'lineas/editar_conducta.html', {'form': form})
 
-@login_required(login_url='/')
+@login_required(login_url='/login/')
 def eliminar_conducta(request, pk):
     conducta = Conducta.objects.get(pk=pk)
     conducta.delete()
